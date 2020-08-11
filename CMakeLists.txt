@@ -4,3 +4,4 @@ project(algospot)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(picnic picnic.cpp)
+add_executable(boardcover boardcover.cpp)
