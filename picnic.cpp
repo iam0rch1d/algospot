@@ -3,9 +3,10 @@
 
 using namespace std;
 
-int countPairings(int numStudent, vector<vector<bool>> &areFriends, vector<bool> &isPicked) {
+int performPairingDfs(vector<vector<bool>> &friendPairGraph, vector<bool> &isPicked) {
+    int numStudent = friendPairGraph.size();
     int indexFirstUnpicked = -1;
-    int numPairings = 0;
+    int numPairing = 0;
 
     for (int i = 0; i < numStudent; i++) {
         if (!isPicked[i]) {
@@ -18,18 +19,18 @@ int countPairings(int numStudent, vector<vector<bool>> &areFriends, vector<bool>
     if (indexFirstUnpicked == -1) return 1; // Base case
 
     for (int i = indexFirstUnpicked + 1; i < numStudent; i++) {
-        if (!isPicked[i] && areFriends[indexFirstUnpicked][i]) {
+        if (friendPairGraph[indexFirstUnpicked][i] && !isPicked[i]) {
             isPicked[indexFirstUnpicked] = true;
             isPicked[i] = true;
 
-            numPairings += countPairings(numStudent, areFriends, isPicked); // Recursion steps
+            numPairing += performPairingDfs(friendPairGraph, isPicked); // Recursion steps
 
             isPicked[indexFirstUnpicked] = false;
             isPicked[i] = false;
         }
     }
 
-    return numPairings;
+    return numPairing;
 }
 
 int main() {
@@ -41,12 +42,12 @@ int main() {
         int numStudent;
         int numFriendPair;
         vector<bool> tempBoolVector;
-        vector<vector<bool>> areFriends;
+        vector<vector<bool>> friendPairGraph;
 
         cin >> numStudent >> numFriendPair;
 
         tempBoolVector.assign(numStudent, false);
-        areFriends.assign(numStudent, tempBoolVector);
+        friendPairGraph.assign(numStudent, tempBoolVector);
 
         vector<bool> isPicked(tempBoolVector);
         vector<vector<int>> friendPair(numFriendPair, {0, 0});
@@ -54,11 +55,11 @@ int main() {
         for (int i = 0; i < numFriendPair; i++) {
             cin >> friendPair[i][0] >> friendPair[i][1];
 
-            areFriends[friendPair[i][0]][friendPair[i][1]] = true;
-            areFriends[friendPair[i][1]][friendPair[i][0]] = true;
+            friendPairGraph[friendPair[i][0]][friendPair[i][1]] = true;
+            friendPairGraph[friendPair[i][1]][friendPair[i][0]] = true;
         }
 
-        cout << countPairings(numStudent, areFriends, isPicked) << "\n";
+        cout << performPairingDfs(friendPairGraph, isPicked) << "\n";
     }
 
     return 0;

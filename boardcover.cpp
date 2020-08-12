@@ -72,7 +72,7 @@ void cover(vector<vector<char>> &board, Point onPoint, Piece withPiece, char pie
     }
 }
 
-int countCovering(vector<vector<char>> &board) {
+int performCoveringDfs(vector<vector<char>> &board) {
     Point toCover = {-1, -1};
     const int numPieceType = 4;
     int numCovering = 0;
@@ -97,7 +97,7 @@ int countCovering(vector<vector<char>> &board) {
         if (canCover(board, toCover, tempPiece)) {
             cover(board, toCover, tempPiece, '#');
 
-            numCovering += countCovering(board); // Recursion steps
+            numCovering += performCoveringDfs(board); // Recursion steps
 
             cover(board, toCover, tempPiece, '.');
         }
@@ -128,7 +128,7 @@ int main() {
             board.push_back(tempCharVector);
         }
 
-        cout << countCovering(board) << "\n";
+        cout << performCoveringDfs(board) << "\n";
     }
 
     return 0;
