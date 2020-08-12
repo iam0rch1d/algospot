@@ -10,12 +10,9 @@ typedef struct {
 
 class Piece {
 public:
-    int typeNo;
     Point difference[3]{};
 
     explicit Piece(int typeNo) {
-        this->typeNo = typeNo;
-
         switch (typeNo) {
             case 0: {
                 difference[0] = {0, 0};
