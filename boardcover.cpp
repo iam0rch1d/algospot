@@ -125,7 +125,6 @@ int main() {
             cin >> tempString;
 
             copy(tempString.begin(), tempString.end(), back_inserter(tempCharVector));
-
             board.push_back(tempCharVector);
         }
 
