@@ -40,15 +40,15 @@ int main() {
     for (int testcaseNo = 0; testcaseNo < numTestcase; testcaseNo++) {
         int numStudent;
         int numFriendPair;
-        vector<bool> temp;
+        vector<bool> tempBoolVector;
         vector<vector<bool>> areFriends;
 
         cin >> numStudent >> numFriendPair;
 
-        temp.assign(numStudent, false);
-        areFriends.assign(numStudent, temp);
+        tempBoolVector.assign(numStudent, false);
+        areFriends.assign(numStudent, tempBoolVector);
 
-        vector<bool> isPicked(temp);
+        vector<bool> isPicked(tempBoolVector);
         vector<vector<int>> friendPair(numFriendPair, {0, 0});
 
         for (int i = 0; i < numFriendPair; i++) {
