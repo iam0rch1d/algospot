@@ -59,7 +59,7 @@ int main() {
             friendPairGraph[friendPair[i][1]][friendPair[i][0]] = true;
         }
 
-        cout << performPairingDfs(friendPairGraph, isPicked) << "\n";
+        cout << performPairingDfs(friendPairGraph, isPicked) << endl;
     }
 
     return 0;

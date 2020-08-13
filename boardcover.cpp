@@ -128,7 +128,7 @@ int main() {
             board.push_back(tempCharVector);
         }
 
-        cout << performCoveringDfs(board) << "\n";
+        cout << performCoveringDfs(board) << endl;
     }
 
     return 0;

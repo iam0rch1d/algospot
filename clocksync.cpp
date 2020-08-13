@@ -79,7 +79,7 @@ int main() {
 
         if (numMinimumPush == INT16_MAX) numMinimumPush = -1;
 
-        cout << numMinimumPush << "\n";
+        cout << numMinimumPush << endl;
     }
 
     return 0;
