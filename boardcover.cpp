@@ -72,7 +72,7 @@ void cover(vector<vector<char>> &board, Point onPoint, Piece withPiece, char pie
     }
 }
 
-int performCoveringDfs(vector<vector<char>> &board) {
+int backtrackCoveringCount(vector<vector<char>> &board) {
     Point toCover = {-1, -1};
     const int numPieceType = 4;
     int numCovering = 0;
@@ -89,7 +89,7 @@ int performCoveringDfs(vector<vector<char>> &board) {
         if (toCover.y != -1) break;
     }
 
-    if (toCover.y == -1) return 1; // Base case
+    if (toCover.y == -1) return 1;
 
     for (int i = 0; i < numPieceType; i++) {
         auto tempPiece = Piece(i);
@@ -97,7 +97,7 @@ int performCoveringDfs(vector<vector<char>> &board) {
         if (canCover(board, toCover, tempPiece)) {
             cover(board, toCover, tempPiece, '#');
 
-            numCovering += performCoveringDfs(board); // Recursion steps
+            numCovering += backtrackCoveringCount(board);
 
             cover(board, toCover, tempPiece, '.');
         }
@@ -128,7 +128,7 @@ int main() {
             board.push_back(tempCharVector);
         }
 
-        cout << performCoveringDfs(board) << endl;
+        cout << backtrackCoveringCount(board) << endl;
     }
 
     return 0;

@@ -48,19 +48,18 @@ public:
     }
 };
 
-int performMinimumPushDfs(Clocks clocks, int switchNo) {
-    int numMinimumPush = INT16_MAX;
+int backtrackPushCount(Clocks clocks, int switchNo) {
+    int numPushMinimum = INT16_MAX;
 
-    if (switchNo == NUM_SWITCH) return clocks.areAligned() ? 0 : INT16_MAX; // Base case
+    if (switchNo == NUM_SWITCH) return clocks.areAligned() ? 0 : INT16_MAX;
 
     for (int i = 0; i < NUM_TIME_TYPE; i++) {
-        // Recursive steps
-        numMinimumPush = min(numMinimumPush, performMinimumPushDfs(clocks, switchNo + 1) + i);
+        numPushMinimum = min(numPushMinimum, backtrackPushCount(clocks, switchNo + 1) + i);
 
         clocks.pushSwitch(switchNo);
     }
 
-    return numMinimumPush;
+    return numPushMinimum;
 }
 
 int main() {
@@ -75,7 +74,7 @@ int main() {
             cin >> time;
         }
 
-        int numMinimumPush = performMinimumPushDfs(Clocks(times), 0);
+        int numMinimumPush = backtrackPushCount(Clocks(times), 0);
 
         if (numMinimumPush == INT16_MAX) numMinimumPush = -1;
 

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int performPairingDfs(vector<vector<bool>> &friendPairGraph, vector<bool> &isPicked) {
+int backtrackPairingCount(vector<vector<bool>> &friendPairGraph, vector<bool> &isPicked) {
     int numStudent = friendPairGraph.size();
     int indexFirstUnpicked = -1;
     int numPairing = 0;
@@ -16,14 +16,14 @@ int performPairingDfs(vector<vector<bool>> &friendPairGraph, vector<bool> &isPic
         }
     }
 
-    if (indexFirstUnpicked == -1) return 1; // Base case
+    if (indexFirstUnpicked == -1) return 1;
 
     for (int i = indexFirstUnpicked + 1; i < numStudent; i++) {
         if (friendPairGraph[indexFirstUnpicked][i] && !isPicked[i]) {
             isPicked[indexFirstUnpicked] = true;
             isPicked[i] = true;
 
-            numPairing += performPairingDfs(friendPairGraph, isPicked); // Recursion steps
+            numPairing += backtrackPairingCount(friendPairGraph, isPicked);
 
             isPicked[indexFirstUnpicked] = false;
             isPicked[i] = false;
@@ -59,7 +59,7 @@ int main() {
             friendPairGraph[friendPair[i][1]][friendPair[i][0]] = true;
         }
 
-        cout << performPairingDfs(friendPairGraph, isPicked) << endl;
+        cout << backtrackPairingCount(friendPairGraph, isPicked) << endl;
     }
 
     return 0;
