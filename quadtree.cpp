@@ -7,16 +7,13 @@ string reverseQuadtree(string::iterator &i) {
 
     i++;
 
-    // Base case
     if (head == 'b' || head == 'w') return string(1, head);
 
-    // Divide
     string upperLeftDivision = reverseQuadtree(i);
     string upperRightDivision = reverseQuadtree(i);
     string lowerLeftDivision = reverseQuadtree(i);
     string lowerRightDivision = reverseQuadtree(i);
 
-    // Merge
     return string("x") + lowerLeftDivision + lowerRightDivision + upperLeftDivision + upperRightDivision;
 }
 
