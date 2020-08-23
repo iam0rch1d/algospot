@@ -11,10 +11,10 @@ typedef struct FenceDivision {
 int findMaximumFenceSurface(vector<int> &boardHeights, FenceDivision fenceDivision) {
     if (fenceDivision.leftEnd == fenceDivision.rightEnd) return boardHeights[fenceDivision.leftEnd];
 
-    int pivot = (fenceDivision.leftEnd + fenceDivision.rightEnd) / 2;
-    int maximumFenceSurface = max(findMaximumFenceSurface(boardHeights, {fenceDivision.leftEnd, pivot}),
-                                  findMaximumFenceSurface(boardHeights, {pivot + 1, fenceDivision.rightEnd}));
-    FenceDivision stretched = {pivot, pivot + 1};
+    int center = (fenceDivision.leftEnd + fenceDivision.rightEnd) / 2;
+    int maximumFenceSurface = max(findMaximumFenceSurface(boardHeights, {fenceDivision.leftEnd, center}),
+                                  findMaximumFenceSurface(boardHeights, {center + 1, fenceDivision.rightEnd}));
+    FenceDivision stretched = {center, center + 1};
     int stretchedHeight = min(boardHeights[stretched.leftEnd], boardHeights[stretched.rightEnd]);
 
     maximumFenceSurface = max(maximumFenceSurface, 2 * stretchedHeight);
