@@ -67,7 +67,7 @@ int main() {
 
     cin >> numTestcase;
 
-    for (int testcaseNo = 0; testcaseNo < numTestcase; testcaseNo++) {
+    while (numTestcase-- > 0) {
         vector<int> times(NUM_CLOCK);
 
         for (int &time : times) {

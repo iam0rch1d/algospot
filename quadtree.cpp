@@ -22,7 +22,7 @@ int main() {
 
     cin >> numTestcase;
 
-    for (int testcaseNo = 0; testcaseNo < numTestcase; testcaseNo++) {
+    while (numTestcase-- > 0) {
         string quadtree;
         string::iterator quadtreeBegin;
 

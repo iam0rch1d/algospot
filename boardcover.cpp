@@ -111,7 +111,7 @@ int main() {
 
     cin >> numTestcase;
 
-    for (int testcaseNo = 0; testcaseNo < numTestcase; testcaseNo++) {
+    while (numTestcase-- > 0) {
         int height;
         int width;
         string tempString;
