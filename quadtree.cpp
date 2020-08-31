@@ -2,17 +2,15 @@
 
 using namespace std;
 
-string reverseQuadtree(string::iterator &i) {
-    char head = *i;
+string reverseQuadtree(string::iterator &head) {
+    char headChar = *head++;
 
-    i++;
+    if (headChar == 'b' || headChar == 'w') return string(1, headChar);
 
-    if (head == 'b' || head == 'w') return string(1, head);
-
-    string upperLeftDivision = reverseQuadtree(i);
-    string upperRightDivision = reverseQuadtree(i);
-    string lowerLeftDivision = reverseQuadtree(i);
-    string lowerRightDivision = reverseQuadtree(i);
+    string upperLeftDivision = reverseQuadtree(head);
+    string upperRightDivision = reverseQuadtree(head);
+    string lowerLeftDivision = reverseQuadtree(head);
+    string lowerRightDivision = reverseQuadtree(head);
 
     return string("x") + lowerLeftDivision + lowerRightDivision + upperLeftDivision + upperRightDivision;
 }

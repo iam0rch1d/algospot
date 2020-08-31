@@ -14,7 +14,7 @@ typedef struct {
     int x;
 } Point;
 
-int dpCanJump(vector<vector<int>> &jumpDistances, vector<vector<int>> &canJumpCache, Point at) {
+int dpCanJump(const vector<vector<int>> &jumpDistances, vector<vector<int>> &canJumpCache, Point at) {
     int boardSize = jumpDistances.size();
 
     if (at.y >= boardSize || at.x >= boardSize) return FALSE;
