@@ -3,6 +3,12 @@
 
 using namespace std;
 
+enum CanJumpState {
+    UNVISITED = -1,
+    FALSE,
+    TRUE
+};
+
 typedef struct {
     int y;
     int x;
@@ -11,13 +17,13 @@ typedef struct {
 int dpCanJump(vector<vector<int>> &jumpDistances, vector<vector<int>> &canJumpCache, Point at) {
     int boardSize = jumpDistances.size();
 
-    if (at.y >= boardSize || at.x >= boardSize) return 0;
+    if (at.y >= boardSize || at.x >= boardSize) return FALSE;
 
-    if (at.y == boardSize - 1 && at.x == boardSize - 1) return 1;
+    if (at.y == boardSize - 1 && at.x == boardSize - 1) return TRUE;
 
     int &canJump = canJumpCache[at.y][at.x];
 
-    if (canJump != -1) return canJump == 1;
+    if (canJump != UNVISITED) return canJump;
 
     int jumpDistance = jumpDistances[at.y][at.x];
 
@@ -36,7 +42,7 @@ int main() {
         cin >> boardSize;
 
         vector<vector<int>> jumpDistances(boardSize, vector<int>(boardSize));
-        vector<vector<int>> canJumpCache(boardSize, vector<int>(boardSize, -1));
+        vector<vector<int>> canJumpCache(boardSize, vector<int>(boardSize, UNVISITED));
 
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
@@ -44,7 +50,7 @@ int main() {
             }
         }
 
-        cout << (dpCanJump(jumpDistances, canJumpCache, {0, 0}) == 1 ? "YES" : "NO") << endl;
+        cout << (dpCanJump(jumpDistances, canJumpCache, {0, 0}) == TRUE ? "YES" : "NO") << endl;
     }
 
     return 0;
