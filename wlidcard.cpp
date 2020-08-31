@@ -20,17 +20,17 @@ int dpCanMatch(const string &pattern,
     if (canMatch != UNMATCHED) return canMatch;
 
     if (patternCharNo < pattern.size()
-    && fileNameCharNo < fileName.size()
-    && (pattern[patternCharNo] == '?' || pattern[patternCharNo] == fileName[fileNameCharNo])) {
+        && fileNameCharNo < fileName.size()
+        && (pattern[patternCharNo] == '?' || pattern[patternCharNo] == fileName[fileNameCharNo])) {
         return canMatch = dpCanMatch(pattern, fileName, canMatchCache, patternCharNo + 1, fileNameCharNo + 1);
     }
 
     if (patternCharNo == pattern.size()) return canMatch = ((fileNameCharNo == fileName.size()) ? TRUE : FALSE);
 
     if (pattern[patternCharNo] == '*'
-    && (dpCanMatch(pattern, fileName, canMatchCache, patternCharNo + 1, fileNameCharNo) == TRUE
-    || (fileNameCharNo < fileName.size()
-    && dpCanMatch(pattern, fileName, canMatchCache, patternCharNo, fileNameCharNo + 1) == TRUE))) {
+        && (dpCanMatch(pattern, fileName, canMatchCache, patternCharNo + 1, fileNameCharNo) == TRUE
+            || (fileNameCharNo < fileName.size()
+                && dpCanMatch(pattern, fileName, canMatchCache, patternCharNo, fileNameCharNo + 1) == TRUE))) {
         return canMatch = TRUE;
     }
 
