@@ -14,7 +14,7 @@ typedef struct {
     int x;
 } Point;
 
-int dpCanJump(const vector<vector<int>> &jumpDistances, vector<vector<int>> &canJumpCache, Point at) {
+int memoizeCanJump(const vector<vector<int>> &jumpDistances, vector<vector<int>> &canJumpCache, Point at) {
     int boardSize = jumpDistances.size();
 
     if (at.y >= boardSize || at.x >= boardSize) return FALSE;
@@ -27,8 +27,8 @@ int dpCanJump(const vector<vector<int>> &jumpDistances, vector<vector<int>> &can
 
     int jumpDistance = jumpDistances[at.y][at.x];
 
-    return canJump = dpCanJump(jumpDistances, canJumpCache, {at.y + jumpDistance, at.x})
-    || dpCanJump(jumpDistances, canJumpCache, {at.y, at.x + jumpDistance});
+    return canJump = memoizeCanJump(jumpDistances, canJumpCache, {at.y + jumpDistance, at.x})
+                     || memoizeCanJump(jumpDistances, canJumpCache, {at.y, at.x + jumpDistance});
 }
 
 int main() {
@@ -50,7 +50,7 @@ int main() {
             }
         }
 
-        cout << (dpCanJump(jumpDistances, canJumpCache, {0, 0}) == TRUE ? "YES" : "NO") << endl;
+        cout << (memoizeCanJump(jumpDistances, canJumpCache, {0, 0}) == TRUE ? "YES" : "NO") << endl;
     }
 
     return 0;
