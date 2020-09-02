@@ -10,7 +10,7 @@ int memoizeMaximumLength(const vector<int> &sequence, vector<int> &maximumLength
 
     if (maximumLength != UNMEMOIZED) return maximumLength;
 
-    maximumLength = 1;
+    maximumLength = 0;
 
     for (int i = startingAt + 1; i < sequence.size(); i++) {
         if (startingAt == -1 || sequence[startingAt] < sequence[i]) {
@@ -32,13 +32,13 @@ int main() {
         cin >> numElement;
 
         vector<int> sequence(numElement);
-        vector<int> maximumLength(numElement + 1, UNMEMOIZED);
+        vector<int> maximumLengthCache(numElement + 1, UNMEMOIZED);
 
         for (int &element : sequence) {
             cin >> element;
         }
 
-        cout << memoizeMaximumLength(sequence, maximumLength, -1) - 1 << endl;
+        cout << memoizeMaximumLength(sequence, maximumLengthCache, -1) << endl;
     }
 
     return 0;
