@@ -53,7 +53,7 @@ int main() {
             cin >> sequenceB[i];
         }
 
-        memset(maximumLengthCache, -1, sizeof(maximumLengthCache));
+        memset(maximumLengthCache, UNMEMOIZED, sizeof(maximumLengthCache));
 
         cout << memoizeMaximumLength(-1, -1) << endl;
     }
