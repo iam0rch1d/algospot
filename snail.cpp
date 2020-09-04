@@ -36,7 +36,7 @@ int main() {
             }
         }
 
-        cout.precision(11);
+        cout.precision(8);
 
         cout << memoizeExpectedHeight(0, 0) << endl;
     }
