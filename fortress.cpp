@@ -16,7 +16,7 @@ struct TreeNode {
 
 int numNode;
 Label nodeLabels[100];
-int longestPathLength;
+int treeDiameter;
 
 int calculateCenterDistanceSquare(int a, int b) {
     return (nodeLabels[a].x - nodeLabels[b].x) * (nodeLabels[a].x - nodeLabels[b].x)
@@ -63,7 +63,7 @@ int calculateHeight(TreeNode *root) {
 
     sort(heights.begin(), heights.end(), [](int i, int j) { return i > j; });
 
-    if (heights.size() >= 2) longestPathLength = max(longestPathLength, heights[0] + heights[1] + 2);
+    if (heights.size() >= 2) treeDiameter = max(treeDiameter, heights[0] + heights[1] + 2);
 
     return heights[0] + 1;
 }
@@ -84,10 +84,10 @@ int main() {
 
         TreeNode *tree = buildTree(0);
 
-        longestPathLength = 0;
+        treeDiameter = 0;
         height = calculateHeight(tree);
 
-        cout << max(longestPathLength, height) << endl;
+        cout << max(treeDiameter, height) << endl;
     }
 
     return 0;
