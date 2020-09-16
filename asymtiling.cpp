@@ -2,7 +2,7 @@
 #include <iostream>
 
 #define UNMEMOIZED -1
-#define MODULUS 1000000007
+#define MODULO 1000000007
 
 using namespace std;
 
@@ -15,15 +15,15 @@ int memoizeTilingCount(int width) {
 
     if (tilingCount != UNMEMOIZED) return tilingCount;
 
-    return tilingCount = (memoizeTilingCount(width - 1) + memoizeTilingCount(width - 2)) % MODULUS;
+    return tilingCount = (memoizeTilingCount(width - 1) + memoizeTilingCount(width - 2)) % MODULO;
 }
 
 int calculateAsymmetricTilingCount(int width) {
-    int asymmetricTilingCount = (memoizeTilingCount(width) - memoizeTilingCount(width / 2) + MODULUS) % MODULUS;
+    int asymmetricTilingCount = (memoizeTilingCount(width) - memoizeTilingCount(width / 2) + MODULO) % MODULO;
 
     if (width % 2 == 1) return asymmetricTilingCount;
 
-    return (asymmetricTilingCount - memoizeTilingCount(width / 2 - 1) + MODULUS) % MODULUS;
+    return (asymmetricTilingCount - memoizeTilingCount(width / 2 - 1) + MODULO) % MODULO;
 }
 
 int main() {

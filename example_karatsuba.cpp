@@ -1,9 +1,9 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
 #define MINIMUM_KARATSUBA_A_SIZE 50
+
+using namespace std;
 
 void normalize(vector<int> &number) {
     number.push_back(0);

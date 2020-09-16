@@ -2,7 +2,7 @@
 #include <iostream>
 
 #define UNMEMOIZED -1
-#define MODULUS 10000000
+#define MODULO 10000000
 
 using namespace std;
 
@@ -20,8 +20,8 @@ int memoizePolyominoCount(int left, int toUse) {
 
     for (int nextToUse = 1; nextToUse <= left - toUse; nextToUse++) {
         polyominoCount = (polyominoCount
-                          + (toUse + nextToUse - 1) * memoizePolyominoCount(left - toUse, nextToUse) % MODULUS)
-                          % MODULUS;
+                          + (toUse + nextToUse - 1) * memoizePolyominoCount(left - toUse, nextToUse) % MODULO)
+                         % MODULO;
     }
 
     return polyominoCount;
@@ -40,7 +40,7 @@ int main() {
         memset(polyominoCountCache, UNMEMOIZED, sizeof(polyominoCountCache));
 
         for (int firstToUse = 1; firstToUse <= pieces; firstToUse++) {
-            polyominoCount = (polyominoCount + memoizePolyominoCount(pieces, firstToUse)) % MODULUS;
+            polyominoCount = (polyominoCount + memoizePolyominoCount(pieces, firstToUse)) % MODULO;
         }
 
         cout << polyominoCount << endl;

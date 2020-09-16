@@ -2,7 +2,7 @@
 #include <iostream>
 
 #define UNMEMOIZED -1
-#define MODULUS 1000000007
+#define MODULO 1000000007
 
 using namespace std;
 
@@ -15,7 +15,7 @@ int memoizeTilingCount(int width) {
 
     if (tilingCount != UNMEMOIZED) return tilingCount;
 
-    return tilingCount = (memoizeTilingCount(width - 1) + memoizeTilingCount(width - 2)) % MODULUS;
+    return tilingCount = (memoizeTilingCount(width - 1) + memoizeTilingCount(width - 2)) % MODULO;
 }
 
 int main() {
