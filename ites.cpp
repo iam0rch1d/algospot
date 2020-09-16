@@ -13,7 +13,7 @@ typedef struct PseudoRng {
 
         return seed % 10000 + 1;
     }
-} PseudoRng; // 'RNG' refers to 'Random Number Generator'
+} PseudoRng;  // 'RNG' refers to 'Random Number Generator'
 
 int main() {
     int numTestcase;

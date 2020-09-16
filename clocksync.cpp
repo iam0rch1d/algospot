@@ -10,16 +10,16 @@ using namespace std;
 
 //      "0123456789abcdef"
 const char mappingTable[NUM_SWITCH][NUM_CLOCK + 1] = {
-        "@@@.............", // Switch No.[0] is mapped to clock No.[0, 1, 2]
-        "...@...@.@.@....", // Switch No.[1] is mapped to clock No.[3, 7, 9, 11]
-        "....@.....@...@@", // Switch No.[2] is mapped to clock No.[4, 10, 14, 15]
-        "@...@@@@........", // Switch No.[3] is mapped to clock No.[0, 4, 5, 6, 7]
-        "......@@@.@.@...", // Switch No.[4] is mapped to clock No.[6, 7, 8, 10, 12]
-        "@.@...........@@", // Switch No.[5] is mapped to clock No.[0, 2, 14, 15]
-        "...@..........@@", // Switch No.[6] is mapped to clock No.[3, 14, 15]
-        "....@@.@......@@", // Switch No.[7] is mapped to clock No.[4, 5, 7, 14, 15]
-        ".@@@@@..........", // Switch No.[8] is mapped to clock No.[1, 2, 3, 4, 5]
-        "...@@@...@...@..", // Switch No.[9] is mapped to clock No.[3, 4, 5, 9, 13]
+        "@@@.............",  // Switch No.[0] is mapped to clock No.[0, 1, 2]
+        "...@...@.@.@....",  // Switch No.[1] is mapped to clock No.[3, 7, 9, 11]
+        "....@.....@...@@",  // Switch No.[2] is mapped to clock No.[4, 10, 14, 15]
+        "@...@@@@........",  // Switch No.[3] is mapped to clock No.[0, 4, 5, 6, 7]
+        "......@@@.@.@...",  // Switch No.[4] is mapped to clock No.[6, 7, 8, 10, 12]
+        "@.@...........@@",  // Switch No.[5] is mapped to clock No.[0, 2, 14, 15]
+        "...@..........@@",  // Switch No.[6] is mapped to clock No.[3, 14, 15]
+        "....@@.@......@@",  // Switch No.[7] is mapped to clock No.[4, 5, 7, 14, 15]
+        ".@@@@@..........",  // Switch No.[8] is mapped to clock No.[1, 2, 3, 4, 5]
+        "...@@@...@...@..",  // Switch No.[9] is mapped to clock No.[3, 4, 5, 9, 13]
 };
 
 class Clocks {

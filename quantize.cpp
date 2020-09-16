@@ -12,7 +12,7 @@ int sequenceSize;
 int sequence[100];
 int partialSumCache[100];
 int squaredPartialSumCache[100];
-int minimumRssCache[101][11]; // 'RSS' refers to 'Residual Sum of Squares'
+int minimumRssCache[101][11];  // 'RSS' refers to 'Residual Sum of Squares'
 
 int calculateRss(int startingAt, int quantizationSize) {
     int sum = partialSumCache[startingAt + quantizationSize - 1]
