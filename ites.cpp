@@ -9,9 +9,11 @@ typedef struct PseudoRng {
     PseudoRng(): seed(1983) {};
 
     unsigned next() {
+        unsigned next = seed;
+
         seed = seed * 214013 + 2531011;
 
-        return seed % 10000 + 1;
+        return next % 10000 + 1;
     }
 } PseudoRng;  // 'RNG' refers to 'Random Number Generator'
 
@@ -30,14 +32,12 @@ int main() {
 
         cin >> target >> numSignal;
 
-        sequence.push(0);
-
         for (int i = 0; i < numSignal; i++) {
             unsigned currentSignal = pseudoRng.next();
 
-            sequence.push(currentSignal);
-
             sequenceSum += currentSignal;
+
+            sequence.push(currentSignal);
 
             while (sequenceSum > target) {
                 sequenceSum -= sequence.front();
