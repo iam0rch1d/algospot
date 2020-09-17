@@ -50,9 +50,6 @@ int calculateNerdCount(pair<int, int> toInsertPerson) {
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-
     int numTestcase;
 
     scanf("%d", &numTestcase);
